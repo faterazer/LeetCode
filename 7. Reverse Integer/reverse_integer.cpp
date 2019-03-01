@@ -2,7 +2,8 @@
 #include <iostream>
 using namespace std;
 
-class Solution {
+class Solution
+{
 public:
     int reverse(int);
 };
