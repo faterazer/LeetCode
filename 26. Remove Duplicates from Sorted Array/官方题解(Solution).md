@@ -8,7 +8,7 @@ Since the array is already sorted, we can keep two pointers $i$ and $j$, where $
 
 When we encounter $nums[i] \neq nums[j]$, the duplicate run has ended so we must copy its value to $nums[i+1]$. $i$ is then incremented and we repeat the same process again until $j$ reaches the end of array.
 
-```(java)
+```java
 public int removeDuplicates(int[] nums) {
     if (nums.length == 0) return 0;
     int i = 0;
@@ -39,7 +39,7 @@ public int removeDuplicates(int[] nums) {
 
 当我们遇到 $nums[j] \neq nums[i]$ 时，跳过重复项的运行已经结束，因此我们必须把它（$nums[j]$）的值复制到 $nums[i+1]$。然后递增 $i$，接着我们将再次重复相同的过程，直到 $j$ 到达数组的末尾为止。
 
-```(java)
+```java
 public int removeDuplicates(int[] nums) {
     if (nums.length == 0) return 0;
     int i = 0;

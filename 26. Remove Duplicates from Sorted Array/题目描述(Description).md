@@ -34,7 +34,7 @@ Note that the input array is passed in by reference, which means modification to
 
 Internally you can think of this:
 
-```()
+```c
 // nums is passed in by reference. (i.e., without making a copy)
 int len = removeDuplicates(nums);
 
@@ -81,7 +81,7 @@ for (int i = 0; i < len; i++) {
 
 你可以想象内部操作如下:
 
-```(c)
+```c
 // nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝
 int len = removeDuplicates(nums);
 
