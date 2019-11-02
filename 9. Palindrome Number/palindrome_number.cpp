@@ -4,8 +4,8 @@ using namespace std;
 class Solution
 {
 public:
-    bool isPalindrome_mark1(int);
-    bool isPalindrome_mark2(int);
+    bool isPalindrome_MK1(int);
+    bool isPalindrome_MK2(int);
 };
 
 int main(int argc, char const *argv[])
@@ -13,18 +13,18 @@ int main(int argc, char const *argv[])
     Solution s;
 
     int test1 = 121;
-    cout << test1 << ":\t" << s.isPalindrome_mark2(test1) << endl;
+    cout << test1 << ":\t" << s.isPalindrome_MK2(test1) << endl;
 
     int test2 = -121;
-    cout << test2 << ":\t" << s.isPalindrome_mark2(test2) << endl;
+    cout << test2 << ":\t" << s.isPalindrome_MK2(test2) << endl;
 
     int test3 = 10;
-    cout << test3 << ":\t" << s.isPalindrome_mark2(test3) << endl;
+    cout << test3 << ":\t" << s.isPalindrome_MK2(test3) << endl;
 
     return 0;
 }
 
-bool Solution::isPalindrome_mark1(int x)
+bool Solution::isPalindrome_MK1(int x)
 {
     long n = 0, hold = x;   // use larger type variable to avoid over-flowing
     if (x >= 0) {
@@ -39,7 +39,7 @@ bool Solution::isPalindrome_mark1(int x)
         return false;
 }
 
-bool Solution::isPalindrome_mark2(int x)
+bool Solution::isPalindrome_MK2(int x)
 {
     if (x < 0 || (x % 10 == 0 && x != 0))
         return false;

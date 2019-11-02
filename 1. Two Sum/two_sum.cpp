@@ -6,9 +6,9 @@ using namespace std;
 class Solution
 {
 public:
-    vector<int> twoSum_mark1(vector<int>&, int);
-    vector<int> twoSum_mark2(vector<int>&, int);
-    vector<int> twoSum_mark3(vector<int>&, int);
+    vector<int> twoSum_MK1(vector<int>&, int);
+    vector<int> twoSum_MK2(vector<int>&, int);
+    vector<int> twoSum_MK3(vector<int>&, int);
 };
 
 int main(int argc, char const *argv[])
@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
     int target = 9;
     Solution s;
 
-    vector<int> result = s.twoSum_mark1(nums, target);
+    vector<int> result = s.twoSum_MK1(nums, target);
     for (const auto &a : result)
         cout << a << " ";
     cout << endl;
@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
 }
 
 // Brute Force. Slowest.
-vector<int> Solution::twoSum_mark1(vector<int>& nums, int target)
+vector<int> Solution::twoSum_MK1(vector<int>& nums, int target)
 {
     vector<int> result;
 	for (size_t i = 0; i < nums.size(); i++) {
@@ -42,7 +42,7 @@ vector<int> Solution::twoSum_mark1(vector<int>& nums, int target)
 }
 
 // Two-pass Hash Table.
-vector<int> Solution::twoSum_mark2(vector<int> &nums, int target)
+vector<int> Solution::twoSum_MK2(vector<int> &nums, int target)
 {
     map<int, int> temp_map;
 	for (size_t i = 0; i < nums.size(); i++)
@@ -61,7 +61,7 @@ vector<int> Solution::twoSum_mark2(vector<int> &nums, int target)
 }
 
 // One-pass Hash Table. Fastest.
-vector<int> Solution::twoSum_mark3(vector<int> &nums, int target)
+vector<int> Solution::twoSum_MK3(vector<int> &nums, int target)
 {
     map<int, int> numbers;
     vector<int> result;

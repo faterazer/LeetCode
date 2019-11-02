@@ -7,10 +7,10 @@ using namespace std;
 class Solution
 {
 public:
-    string longestCommonPrefix_Mark1(vector<string> &);
-    string longestCommonPrefix_Mark2(vector<string> &);
-    string longestCommonPrefix_Mark3(vector<string> &);
-    string longestCommonPrefix_Mark4(vector<string> &);
+    string longestCommonPrefix_MK1(vector<string> &);
+    string longestCommonPrefix_MK2(vector<string> &);
+    string longestCommonPrefix_MK3(vector<string> &);
+    string longestCommonPrefix_MK4(vector<string> &);
   private:
     string commonPrefix(const string &, const string &);
     string longestCommonPrefix(vector<string> &, size_t, size_t);
@@ -19,27 +19,27 @@ public:
 int main(int argc, char const *argv[])
 {
     vector<string> test1 = { "flower", "flow", "flight" };
-    cout << Solution().longestCommonPrefix_Mark1(test1) << endl;
+    cout << Solution().longestCommonPrefix_MK1(test1) << endl;
 
     vector<string> test2 = { "dog", "racecar", "car" };
-    cout << Solution().longestCommonPrefix_Mark1(test2) << endl;
+    cout << Solution().longestCommonPrefix_MK1(test2) << endl;
 
     vector<string> test3 = { "" };
-    cout << Solution().longestCommonPrefix_Mark1(test3) << endl;
+    cout << Solution().longestCommonPrefix_MK1(test3) << endl;
 
     vector<string> test4 = { "aaaaa", "aaaaa", "aaaaa", "aaaaa", "aaaaa" };
-    cout << Solution().longestCommonPrefix_Mark1(test4) << endl;
+    cout << Solution().longestCommonPrefix_MK1(test4) << endl;
 
     vector<string> test5 = {};
-    cout << Solution().longestCommonPrefix_Mark1(test5) << endl;
+    cout << Solution().longestCommonPrefix_MK1(test5) << endl;
 
     vector<string> test6 = { "a", "b" };
-    cout << Solution().longestCommonPrefix_Mark1(test6) << endl;
+    cout << Solution().longestCommonPrefix_MK1(test6) << endl;
     return 0;
 }
 
 // Horizontal scanning
-string Solution::longestCommonPrefix_Mark1(vector<string> &strs)
+string Solution::longestCommonPrefix_MK1(vector<string> &strs)
 {
     if (strs.empty())
         return "";
@@ -55,7 +55,7 @@ string Solution::longestCommonPrefix_Mark1(vector<string> &strs)
 }
 
 // Vertical scanning
-string Solution::longestCommonPrefix_Mark2(vector<string> &strs)
+string Solution::longestCommonPrefix_MK2(vector<string> &strs)
 {
     if (strs.empty() || strs[0].empty())
         return "";
@@ -69,7 +69,7 @@ string Solution::longestCommonPrefix_Mark2(vector<string> &strs)
 }
 
 // Divide and conquer
-string Solution::longestCommonPrefix_Mark3(vector<string> &strs)
+string Solution::longestCommonPrefix_MK3(vector<string> &strs)
 {
     if (strs.empty())
         return "";
@@ -80,9 +80,7 @@ string Solution::longestCommonPrefix_Mark3(vector<string> &strs)
 
 string Solution::longestCommonPrefix(vector<string> &strs, size_t left, size_t right)
 {
-    if (left > right)
-        return "";
-    else if (left < right) {
+    if (left < right) {
         size_t mid = (left + right) / 2;
         string lstring = longestCommonPrefix(strs, left, mid);
         string rstring = longestCommonPrefix(strs, mid+1, right);
@@ -104,7 +102,7 @@ string Solution::commonPrefix(const string &s1, const string &s2)
 }
 
 // Binary search
-string Solution::longestCommonPrefix_Mark4(vector<string> &strs)
+string Solution::longestCommonPrefix_MK4(vector<string> &strs)
 {
     if (strs.empty())
         return "";
