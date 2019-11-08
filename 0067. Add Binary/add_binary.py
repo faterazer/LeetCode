@@ -7,12 +7,13 @@ class Solution:
             adigit, bdigit = 0, 0
             if apos >= 0:
                 adigit = int(a[apos])
+                apos -= 1
             if bpos >= 0:
                 bdigit = int(b[bpos])
-            ans = str(adigit ^ bdigit ^ carry) + ans
-            carry = (adigit + bdigit + carry) // 2
-            apos -= 1
-            bpos -= 1
+                bpos -= 1
+            t = adigit + bdigit + carry
+            carry = t >> 1
+            ans = str(t & 1) + ans
         return ans
 
     def addBinary_MK2(self, a: str, b: str) -> str:
