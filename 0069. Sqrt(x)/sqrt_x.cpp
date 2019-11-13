@@ -10,7 +10,7 @@ int Solution::mySqrt_MK1(int x)
     if (x <= 1)
         return x;
 
-    int left = 1, right = x / 2;    // if x > 1, sqrt(x) <= x / 2 + 1
+    int left = 1, right = x / 2;
     while (left <= right) {
         int mid = left + ((right - left) >> 1);
         if (mid == x / mid)
@@ -29,7 +29,7 @@ int Solution::mySqrt_MK2(int x)
     if (x == 0)
         return x;
 
-    int t = x / 2 + 1;
+    int t = x / 2 + 1;  // if x > 1, sqrt(x) <= x / 2 + 1
     while (t > x / t) 
         t = (t + x / t) / 2;
     return t;
