@@ -330,5 +330,6 @@ class Solution {
 * Time complexity: $O(N)$ since each node is visited exactly once.
 * Space complexity: $O(\log(N))$ in the best case of completely balanced tree and $O(N)$ in the worst case of completely unbalanced tree, to keep a deque.
 
+> From comment:
 > For iterative version, the space complexity is linear, i.e. the worst case is completely balanced tree where the very last level contains half of the nodes, and all of those will be on a queue at the same time.
 > The best case for space complexity is completely unbalanced tree when you always keep exactly 1 node on queue.
