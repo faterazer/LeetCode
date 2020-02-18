@@ -166,7 +166,7 @@ class Solution:
             # Value of current node or parent node.
             parent_val = node.val
 
-            if p_val > parent_val and q_val > parent_val:    
+            if p_val > parent_val and q_val > parent_val:
                 # If both p and q are greater than parent
                 node = node.right
             elif p_val < parent_val and q_val < parent_val:
