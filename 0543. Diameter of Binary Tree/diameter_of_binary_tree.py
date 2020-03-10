@@ -8,3 +8,13 @@ class TreeNode:
 class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
         self.diameter = 0
+
+        def depth(root: TreeNode) -> int:
+            if not root:
+                return -1
+            left, right = depth(root.left) + 1, depth(root.right) + 1
+            self.diameter = max(self.diameter, left + right)
+            return max(left, right)
+        
+        depth(root)
+        return self.diameter
