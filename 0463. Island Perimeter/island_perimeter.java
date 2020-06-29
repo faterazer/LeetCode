@@ -3,12 +3,12 @@ public class island_perimeter {
         int m = grid.length, n = grid[0].length;
         int islands = 0, neighbours = 0;
         for (int i = 0; i < m; i++) {
-            for (int j = 0; j < m; j++) {
-                if (grid[i][j]) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 1) {
                     islands++;
-                    if (i < m - 1 and grid[i + 1][j])
+                    if (i < m - 1 && grid[i + 1][j] == 1)
                         neighbours++;
-                    if (j < n - 1 and grid[i][j + 1])
+                    if (j < n - 1 && grid[i][j + 1] == 1)
                         neighbours++;
                 }
             }
