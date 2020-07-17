@@ -23,13 +23,7 @@ class Solution:
         '''
         binary search. 二分查找
         '''
-        if not nums:
-            return 0
-        if target > nums[-1]:
-            return len(nums)
-
-        left = 0
-        right = len(nums) - 1
+        left, right = 0, len(nums) - 1
         while left <= right:
             mid = left + (right - left) // 2
             if nums[mid] < target:
