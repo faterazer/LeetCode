@@ -1,10 +1,6 @@
 #include <algorithm>
-#include <iostream>
 #include <string>
-using std::reverse;
-using std::string;
-using std::cout;
-using std::endl;
+using namespace std;
 
 class Solution {
 public:
