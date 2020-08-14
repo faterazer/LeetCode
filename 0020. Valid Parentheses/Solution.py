@@ -33,6 +33,3 @@ class Solution:
             s = s.replace('[]', '')
             s = s.replace('{}', '')
         return not s
-
-
-print(Solution().isValid_MK2("["))

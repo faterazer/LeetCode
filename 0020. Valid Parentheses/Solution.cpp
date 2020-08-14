@@ -12,20 +12,6 @@ private:
     map<char, char> mapping;
 };
 
-int main()  // 测试用例(testcases)
-{
-    cout << Solution().isValid("()") << endl;
-
-    cout << Solution().isValid("()[]{}") << endl;
-
-    cout << Solution().isValid("(]") << endl;
-
-    cout << Solution().isValid("([)]") << endl;
-
-    cout << Solution().isValid("{[]}") << endl;
-    return 0;
-}
-
 Solution::Solution()
 {
     mapping[')'] = '(';
