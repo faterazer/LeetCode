@@ -19,11 +19,3 @@ int Solution::lengthOfLastWord(string s)
     }
     return ans;
 }
-
-int main()
-{
-    string testCase = "Hello World";
-    // string testCase = "a ";
-    cout << Solution().lengthOfLastWord(testCase) << endl;
-    return 0;
-}
