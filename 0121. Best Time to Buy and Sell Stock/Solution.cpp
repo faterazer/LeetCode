@@ -11,6 +11,8 @@ public:
 
 // Solution.md
 // Approach 2: One pass
+// Time complexity: O(n)
+// Space complexity: O(1)
 int Solution::maxProfit_MK1(vector<int> &prices)
 {
     if (prices.empty())
@@ -34,8 +36,8 @@ int Solution::maxProfit_MK2(vector<int> &prices)
     int max = 0, curr = 0;
     for (size_t i = 1; i < prices.size(); i++) {
         int diff = prices[i] - prices[i - 1];
-        if (diff > 0)
-            curr = curr >= 0 ? curr + diff : diff;
+        if (curr < 0)
+            curr = diff;
         else
             curr += diff;
         max = std::max(max, curr);

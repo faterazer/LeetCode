@@ -6,6 +6,8 @@ class Solution:
         '''
         Solution.md
         Approach 2: One pass
+        Time complexity: O(n)
+        Space complexity: O(1)
         '''
         if not prices:
             return 0
@@ -27,8 +29,8 @@ class Solution:
         max_profit, max_curr = 0, 0
         for i in range(1, len(prices)):
             diff = prices[i] - prices[i-1]
-            if diff > 0:
-                max_curr = max_curr + diff if max_curr >= 0 else diff
+            if max_curr < 0:
+                max_curr = diff
             else:
                 max_curr += diff
             max_profit = max(max_profit, max_curr)
