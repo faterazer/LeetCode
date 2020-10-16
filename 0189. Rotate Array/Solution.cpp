@@ -21,7 +21,7 @@ void Solution::rotate_MK1(vector<int> &nums, int k)
 void Solution::rotate_MK2(vector<int> &nums, int k)
 {
     k %= nums.size();
-    int count = 0;
+    size_t count = 0;
     for (int start = 0; count < nums.size(); start++) {
         int curr = start;
         int prev = nums[start];
