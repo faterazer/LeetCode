@@ -12,7 +12,7 @@ class Solution
 {
 public:
     bool isPalindrome_MK1(ListNode *head);
-    bool isPalindrome(ListNode *head);
+    bool isPalindrome_MK2(ListNode *head);
 };
 
 // Time complexity: O(n)
@@ -36,7 +36,7 @@ bool Solution::isPalindrome_MK1(ListNode *head)
 
 // Time complexity: O(n)
 // Space complexity: O(1)
-bool Solution::isPalindrome(ListNode *head)
+bool Solution::isPalindrome_MK2(ListNode *head)
 {
     // 快慢指针法，拿到后半部分结点的同时，反转前半部分结点
     ListNode *slow = head, *fast = head;
