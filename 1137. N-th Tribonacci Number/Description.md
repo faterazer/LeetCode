@@ -1,6 +1,6 @@
 # 1137. N-th Tribonacci Number
 
-The Tribonacci sequence $T_n$ is defined as follows: 
+The Tribonacci sequence $T_n$ is defined as follows:
 $$
 \mathrm{T}_{0}=0, \mathrm{~T}_{1}=1, \mathrm{~T}_{2}=1, \text { and } \mathrm{T}_{\mathrm{n}+3}=\mathrm{T}_{\mathrm{n}}+\mathrm{T}_{\mathrm{n}+1}+\mathrm{T}_{\mathrm{n}+2} \text { for } \mathrm{n}>=0
 $$
