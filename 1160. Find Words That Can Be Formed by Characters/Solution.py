@@ -1,8 +1,9 @@
+from collections import Counter
 from typing import List
 
 
 class Solution:
-    def countCharacters(self, words: List[str], chars: str) -> int:
+    def countCharacters_MK1(self, words: List[str], chars: str) -> int:
         char_table = [0] * 26
         for ch in chars:
             char_table[ord(ch) - ord('a')] += 1
@@ -17,3 +18,11 @@ class Solution:
             else:
                 ret += len(word)
         return ret
+
+    def countCharacters_MK2(self, words: List[str], chars: str) -> int:
+        res = 0
+        c = Counter(chars)
+        for w in words:
+            if c == c | Counter(w):
+                res += len(w)
+        return res
