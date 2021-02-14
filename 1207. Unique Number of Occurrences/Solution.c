@@ -1,3 +1,5 @@
+#include <stdbool.h>
+
 bool uniqueOccurrences(int *arr, int arrSize)
 {
     int map[2001] = {0};
