@@ -22,28 +22,6 @@ private:
     map<char, int> mapping;
 };
 
-int main(int argc, char const *argv[])
-{
-    Solution s;
-
-    string test1 = "III";
-    cout << s.romanToInt_MK2(test1) << endl;
-
-    string test2 = "IV";
-    cout << s.romanToInt_MK2(test2) << endl;
-
-    string test3 = "IX";
-    cout << s.romanToInt_MK2(test3) << endl;
-
-    string test4 = "LVIII";
-    cout << s.romanToInt_MK2(test4) << endl;
-
-    string test5 = "MCMXCIV";
-    cout << s.romanToInt_MK2(test5) << endl;
-
-    return 0;
-}
-
 Solution::Solution()
 {
     mapping['I'] = 1;
