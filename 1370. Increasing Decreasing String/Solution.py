@@ -1,6 +1,5 @@
 import collections
 import string
-from typing import Counter
 
 
 class Solution:
