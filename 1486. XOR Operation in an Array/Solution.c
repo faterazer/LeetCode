@@ -9,7 +9,7 @@ int xorOperation_MK1(int n, int start)
 int helper(int n, int start)
 {
     if (start & 1)
-        return (start - 1) ^ helper1(n + 1, start - 1);
+        return (start - 1) ^ helper(n + 1, start - 1);
     if (n % 2 == 0)
         return (n >> 1) & 1;
     else
