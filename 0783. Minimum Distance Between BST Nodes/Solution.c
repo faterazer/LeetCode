@@ -21,10 +21,45 @@ void inOrder(struct TreeNode *root, struct TreeNode **pre, int *ans)
         inOrder(root->right, pre, ans);
 }
 
-int minDiffInBST(struct TreeNode *root)
+struct TreeNode* getSuccessor(struct TreeNode *root)
+{
+    struct TreeNode *p = root->left;
+    while (p->right && p->right != root)
+        p = p->right;
+    return p;
+}
+
+int minDiffInBST_MK1(struct TreeNode *root)
 {
     struct TreeNode *pre = NULL;
     int ans = INT_MAX;
     inOrder(root, &pre, &ans);
+    return ans;
+}
+
+int minDiffInBST_MK2(struct TreeNode *root)
+{
+    int ans = INT_MAX;
+    struct TreeNode *pre = NULL;
+    while (root) {
+        if (pre)
+            ans = min(ans, abs(root->val - pre->val));
+        if (!root->left) {
+            pre = root;
+            root = root->right;
+        }
+        else {
+            struct TreeNode *succ = getSuccessor(root);
+            if (!succ->right) {
+                succ->right = root;
+                root = root->left;
+            }
+            else {
+                succ->right = NULL;
+                pre = root;
+                root = root->right;
+            }
+        }
+    }
     return ans;
 }
