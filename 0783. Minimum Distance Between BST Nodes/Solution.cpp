@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <numeric>
+#include <stack>
 using namespace std;
 
 struct TreeNode
@@ -46,6 +47,26 @@ public:
                     root = root->right;
                 }
             }
+        }
+        return ans;
+    }
+
+    int minDiffInBST_MK3(TreeNode *root)
+    {
+        int ans = numeric_limits<int>::max();
+        TreeNode *pre = nullptr;
+        stack<TreeNode*> stk;
+        while (root || !stk.empty()) {
+            while (root) {
+                stk.emplace(root);
+                root = root->left;
+            }
+            root = stk.top();
+            stk.pop();
+            if (pre)
+                ans = min(ans, abs(root->val - pre->val));
+            pre = root;
+            root = root->right;
         }
         return ans;
     }
