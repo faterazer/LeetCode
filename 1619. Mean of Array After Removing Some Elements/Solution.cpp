@@ -25,7 +25,7 @@ public:
 private:
     void kth_element(vector<int> &arr, int l, int k, int r)
     {
-        if (l >= r || k <= l || k >= r)
+        if (l >= r || k < l || k >= r)
             return;
         int m = l + ((r - l) >> 1), last = l;
         // 三数取中
