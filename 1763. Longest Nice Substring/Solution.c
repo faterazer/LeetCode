@@ -24,7 +24,7 @@ char* longestNiceSubstring(char *s)
 {
     char *end = s + strlen(s);
     char *r = "";
-    for ( helper(s); s < end; s += strlen(s) + 1) {
+    for (helper(s); s < end; s += strlen(s) + 1) {
         if (strlen(s) > strlen(r))
             r = s;
     }
