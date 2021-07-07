@@ -34,4 +34,33 @@ public:
         int b = ((n * (n + 1) * (2 * n + 1) / 6) - sum2) / a;
         return vector<int>{(b - a) >> 1, (b + a) >> 1};
     }
+
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+    // 位运算
+    vector<int> findErrorNums_MK3(vector<int> &nums)
+    {
+        int x = 0, n = nums.size();
+        for (const int &num : nums)
+            x ^= num;
+        for (int i = 1; i <= n; i++)
+            x ^= i;
+        int lowbit = x & (-x), a = 0, b = 0;
+        for (const int &num : nums) {
+            if (num & lowbit)
+                a ^= num;
+            else
+                b ^= num;
+        }
+        for (int i = 1; i <= n; i++) {
+            if (i & lowbit)
+                a ^= i;
+            else
+                b ^= i;
+        }
+        for (const int &num : nums)
+            if (a == num)
+                return {a, b};
+        return {b, a};
+    }
 };
