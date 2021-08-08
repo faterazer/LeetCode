@@ -1,3 +1,7 @@
+/**
+ * Time complexity: O(n)
+ * Space complexity: O(1)
+ */
 int tribonacci(int n)
 {
     if (n < 3)
