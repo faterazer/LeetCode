@@ -29,4 +29,3 @@ Explanation: 1 cannot be popped before 2.
 - All the elements of `pushed` are **unique**.
 - `popped.length == pushed.length`
 - `popped` is a permutation of `pushed`.
-
