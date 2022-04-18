@@ -14,5 +14,5 @@ class Solution:
 
         res = [1]
         while len(res) < n:
-            res.append(nextNum(res[-1], n))    
+            res.append(nextNum(res[-1], n))
         return res
