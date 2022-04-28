@@ -18,7 +18,7 @@ public:
 
         int left_most = 0;
         for (int i = 1; i < trees.size(); ++i)
-            if (trees[i][0] < trees[left_most][0])
+            if (trees[i][0] < trees[left_most][0] || (trees[i][0] == trees[left_most][0] && trees[i][1] < trees[left_most][1]))
                 left_most = i;
 
         vector<vector<int>> res;
@@ -97,7 +97,7 @@ public:
         return res;
     }
 
-    vector<vector<int>> outerTrees(vector<vector<int>>& trees)
+    vector<vector<int>> outerTrees_Andrew(vector<vector<int>>& trees)
     {
         int n = trees.size();
         if (n < 4)
@@ -117,7 +117,6 @@ public:
             visited[i] = true;
             hull.emplace_back(i);
         }
-        int m = hull.size();
         for (int i = n - 2; i >= 0; i--) {
             if (!visited[i]) {
                 while (cross(trees[hull[hull.size() - 2]], trees[hull.back()], trees[i]) < 0) {
