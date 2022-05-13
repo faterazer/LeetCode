@@ -4,7 +4,7 @@ from typing import List
 
 
 class Solution:
-    def __cross(self, p: List[int], q: List[int], r: List[int]) -> List[List[int]]:
+    def __cross(self, p: List[int], q: List[int], r: List[int]) -> int:
         return (q[0] - p[0]) * (r[1] - q[1]) - (q[1] - p[1]) * (r[0] - q[0])
 
     def __distanse(self, p: List[int], q: List[int]) -> int:
