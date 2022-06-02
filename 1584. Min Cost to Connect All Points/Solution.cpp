@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <vector>
 using namespace std;
 
@@ -116,14 +117,14 @@ public:
             for (size_t j = i + 1; j < points.size(); ++j)
                 edges.emplace_back(Edge(i, j, manhattanDistance(points[i], points[j])));
         sort(edges.begin(), edges.end(), [](const Edge& a, const Edge& b) {
-            return a.distance < b.distance;
+            return a.len < b.len;
         });
         vector<int> tree(points.size(), -1);
         int count = tree.size(), res = 0;
         for (size_t i = 0; i < edges.size() && count > 1; ++i) {
-            int root_a = findRoot(tree, edges[i].node_a);
-            int root_b = findRoot(tree, edges[i].node_b);
-            int dist = edges[i].distance;
+            int root_a = findRoot(tree, edges[i].x);
+            int root_b = findRoot(tree, edges[i].y);
+            int dist = edges[i].len;
             if (root_a != root_b) {
                 res += dist;
                 count -= 1;
