@@ -26,28 +26,28 @@ int Solution::minimumLengthEncoding_MK1(vector<string> &words)
     return ans;
 }
 
-class TireNode
+class TrieNode
 {
 public:
-    unordered_map<char, TireNode*> children;
+    unordered_map<char, TrieNode*> children;
 };
 
 int Solution::minimumLengthEncoding_MK2(vector<string> &words)
 {
-    TireNode *root = new TireNode;
-    vector<pair<TireNode*, int>> leaves;
+    TrieNode *root = new TrieNode;
+    vector<pair<TrieNode*, int>> leaves;
     for (const string &word : unordered_set<string>(words.begin(), words.end())) {
-        TireNode *curr = root;
+        TrieNode *curr = root;
         for (int i = word.size() - 1; i >= 0; i--) {
             if (curr->children.count(word[i]) == 0)
-                curr->children[word[i]] = new TireNode;
+                curr->children[word[i]] = new TrieNode;
             curr = curr->children[word[i]];
         }
         leaves.emplace_back(make_pair(curr, word.size() + 1));
     }
 
     int ans = 0;
-    for (const pair<TireNode*, int> &leaf : leaves)
+    for (const pair<TrieNode*, int> &leaf : leaves)
         if (!leaf.first->children.size())
             ans += leaf.second;
     return ans;

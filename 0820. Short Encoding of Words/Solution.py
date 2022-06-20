@@ -1,8 +1,4 @@
-from typing import List
-
-
-class TireNode:
-    List =
+from typing import Dict, List
 
 
 class Solution:
@@ -30,3 +26,19 @@ class Solution:
             if not words[i+1].startswith(words[i]):
                 ans += len(words[i]) + 1
         return ans
+
+    def minimumLengthEncoding_MK3(self, words: List[str]) -> int:
+        '''
+        Trie tree
+        '''
+        root = {}
+        leaves = []
+        for word in set(words):
+            cur = root
+            for c in word[::-1]:
+                if c not in cur:
+                    cur[c] = {}
+                cur = cur[c]
+            leaves.append((cur, len(word)))
+
+        return sum(depth + 1 for leaf, depth in leaves if not leaf)
