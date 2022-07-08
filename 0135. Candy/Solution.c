@@ -7,7 +7,7 @@ int candy(int* ratings, int ratingsSize)
             pre = ratings[i] == ratings[i - 1] ? 1 : pre + 1;
             res += pre;
             inc = pre;
-        } else if (ratings[i] < ratings[i - 1]) {
+        } else {
             ++dec;
             if (dec == inc)
                 ++dec;
