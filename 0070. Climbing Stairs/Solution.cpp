@@ -16,8 +16,8 @@ private:
     int comb(int n, int m);
     int gcd(int a, int b);
     int climbStairs(int i, int n);
-    int climbStairs(int i, int n, vector<int> &memo);
-    vector<vector<long long>> matrixMultiply(const vector<vector<long long>> &a, const vector<vector<long long>> &b);
+    int climbStairs(int i, int n, vector<int>& memo);
+    vector<vector<long long>> matrixMultiply(const vector<vector<long long>>& a, const vector<vector<long long>>& b);
 };
 
 int Solution::climbStairs(int i, int n)
@@ -35,7 +35,7 @@ int Solution::climbStairs_MK1(int n)
     return climbStairs(0, n);
 }
 
-int Solution::climbStairs(int i, int n, vector<int> &memo)
+int Solution::climbStairs(int i, int n, vector<int>& memo)
 {
     if (i > n)
         return 0;
@@ -62,7 +62,7 @@ int Solution::climbStairs_MK3(int n)
     dp[0] = 1;
     dp[1] = 1;
     for (int i = 2; i <= n; i++)
-        dp[i] = dp[i-1] + dp[i-2];
+        dp[i] = dp[i - 1] + dp[i - 2];
     return dp[n];
 }
 
@@ -71,7 +71,7 @@ int Solution::climbStairs_MK4(int n)
 {
     if (n == 1 || n == 2)
         return n;
-    
+
     int first = 1, second = 2;
     for (int i = 3; i <= n; i++) {
         second = first + second;
@@ -80,9 +80,9 @@ int Solution::climbStairs_MK4(int n)
     return second;
 }
 
-vector<vector<long long>> Solution::matrixMultiply(const vector<vector<long long>> &a, const vector<vector<long long>> &b)
+vector<vector<long long>> Solution::matrixMultiply(const vector<vector<long long>>& a, const vector<vector<long long>>& b)
 {
-    vector<vector<long long>> ans{ {0, 0}, { 0, 0 } };
+    vector<vector<long long>> ans { { 0, 0 }, { 0, 0 } };
     for (size_t i = 0; i != a.size(); i++)
         for (size_t j = 0; j != a.size(); j++)
             for (size_t k = 0; k != a.size(); k++)
@@ -112,15 +112,15 @@ int Solution::climbStairs_MK5(int n)
 int Solution::climbStairs_MK6(int n)
 {
     double sqrt5 = sqrt(5);
-    double fibn = pow((1 + sqrt5) / 2, n) - pow((1 - sqrt5) / 2, n);
-    return static_cast<int>(fibn/sqrt5);
+    double fibn = pow((1 + sqrt5) / 2, n + 1) - pow((1 - sqrt5) / 2, n + 1);
+    return static_cast<int>(fibn / sqrt5);
 }
 
 // Use Combination of Probability Theory
 int Solution::climbStairs_MK7(int n)
 {
     int ans = 0;
-    for (int m = 0; m <= n; m++, n--) 
+    for (int m = 0; m <= n; m++, n--)
         ans += comb(n, m);
     return ans;
 }
