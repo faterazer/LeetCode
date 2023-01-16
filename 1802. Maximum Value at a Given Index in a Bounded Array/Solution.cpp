@@ -32,24 +32,22 @@ public:
         if (left > right)
             swap(left, right);
 
-        double upper = ((double)(left + 1) * (left + 1) - 3 * (left + 1)) / 2 + left + 1 + (left + 1) + ((left + 1) * (left + 1) - 3 * (left + 1)) / 2 + right + 1;
+        double upper = left * left + 3 * left + right + 1;
         if (upper >= maxSum) {
-            double a = 1;
-            double b = -2;
-            double c = left + right + 2 - maxSum;
-            return (int)floor((-b + sqrt(b * b - 4 * a * c)) / (2 * a));
+            double a = 1, b = -2, c = left + right + 2 - maxSum;
+            return floor((-b + sqrt(b * b - 4 * a * c)) / (2 * a));
         }
 
-        upper = ((double)2 * (right + 1) - left - 1) * left / 2 + (right + 1) + ((right + 1) * (right + 1) - 3 * (right + 1)) / 2 + right + 1;
+        upper = (2.0 * (right + 1) - left - 1) * left / 2 + (right + 1) + ((right + 1) * (right + 1) - 3 * (right + 1)) / 2 + right + 1;
         if (upper >= maxSum) {
             double a = 1.0 / 2;
             double b = left + 1 - 3.0 / 2;
             double c = right + 1 + (-left - 1) * left / 2 - maxSum;
-            return (int)floor((-b + sqrt(b * b - 4 * a * c)) / (2 * a));
+            return floor((-b + sqrt(b * b - 4 * a * c)) / (2 * a));
         } else {
             double a = left + right + 1;
             double b = (-left * left - left - right * right - right) / 2 - maxSum;
-            return (int)floor(-b / a);
+            return floor(-b / a);
         }
     }
 
