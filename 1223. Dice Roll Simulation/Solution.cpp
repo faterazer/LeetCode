@@ -15,7 +15,7 @@ public:
             for (int j = 0; j < m; j++) {
                 dp[i][j] = s[i - 1];
                 if (i > rollMax[j])
-                    dp[i][j] = (dp[i][j] - s[i - rollMax[j] - 1] + dp[i - rollMax[j] - 1][j]);
+                    dp[i][j] = dp[i][j] - s[i - rollMax[j] - 1] + dp[i - rollMax[j] - 1][j];
                 else if (i == rollMax[j])
                     --dp[i][j];
                 dp[i][j] = (dp[i][j] + MOD) % MOD;
