@@ -5,10 +5,14 @@ class Solution:
     def quickSort(self, nums: List[int], left: int, right: int) -> None:
         if left >= right:
             return
+        if all(nums[i] == nums[left] for i in range(left + 1, right + 1)):
+            return
 
-        last = left
+        mid = left + ((right - left) >> 1)
+        nums[left], nums[mid] = nums[mid], nums[left]
+        pivot, last = nums[left], left
         for i in range(left + 1, right + 1):
-            if nums[i] < nums[left]:
+            if nums[i] < pivot:
                 last += 1
                 nums[i], nums[last] = nums[last], nums[i]
         nums[left], nums[last] = nums[last], nums[left]
@@ -16,9 +20,9 @@ class Solution:
         self.quickSort(nums, last + 1, right)
 
     def sortArray_MK1(self, nums: List[int]) -> List[int]:
-        '''
+        """
         Quick Sort
-        '''
+        """
         self.quickSort(nums, 0, len(nums) - 1)
         return nums
 
@@ -26,11 +30,11 @@ class Solution:
         left = []
         for i in range(low, mid + 1):
             left.append(nums[i])
-        left.append(float('inf'))
+        left.append(float("inf"))
         right = []
         for i in range(mid + 1, high + 1):
             right.append(nums[i])
-        right.append(float('inf'))
+        right.append(float("inf"))
         i, j = 0, 0
         for k in range(low, high + 1):
             if left[i] <= right[j]:
@@ -49,8 +53,8 @@ class Solution:
         self.merge(nums, low, mid, high)
 
     def sortArray_MK2(self, nums: List[int]) -> List[int]:
-        '''
+        """
         Merge Sort
-        '''
+        """
         self.mergeSort(nums, 0, len(nums) - 1)
         return nums
