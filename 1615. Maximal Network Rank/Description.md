@@ -1,5 +1,3 @@
-
-
 # 1615. Maximal Network Rank
 
 There is an infrastructure of `n` cities with some number of `roads` connecting these cities. Each `roads[i] = [a_i, b_i]` indicates that there is a bidirectional road between cities `a_i` and `b_i`.
@@ -46,4 +44,3 @@ Explanation: The network rank of 2 and 5 is 5. Notice that all the cities do not
 - `0 <= a_i, b_i <= n-1`
 - `a_i != b_i`
 - Each pair of cities has **at most one** road connecting them.
-
