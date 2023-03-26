@@ -15,3 +15,4 @@ class Solution:
             need = (pre_sum - total) % p
             if need in memo:
                 res = min(res, i - memo[need])
+        return res if res < len(nums) else -1
