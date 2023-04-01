@@ -27,7 +27,7 @@ A phone number is formatted as follows:
 To mask a phone number:
 
 - Remove all **separation characters**.
-- The masked phone number should have the form: 
+- The masked phone number should have the form:
   - `"***-***-XXXX"` if the country code has 0 digits.
   - `"+*-***-***-XXXX"` if the country code has 1 digit.
   - `"+**-***-***-XXXX"` if the country code has 2 digits.
@@ -66,7 +66,7 @@ Thus, the resulting masked number is "***-***-7890".
 **Constraints:**
 
 - `s` is either a **valid** email or a phone number.
-- If `s` is an email: 
+- If `s` is an email:
   - `8 <= s.length <= 40`
   - `s` consists of uppercase and lowercase English letters and exactly one `'@'` symbol and `'.'` symbol.
 - If `s` is a phone number:
