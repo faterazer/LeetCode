@@ -1,5 +1,5 @@
 #include <algorithm>
-#include <iterator>
+#include <numeric>
 #include <vector>
 using namespace std;
 
@@ -8,32 +8,35 @@ public:
     int bestTeamScore(vector<int>& scores, vector<int>& ages)
     {
         int n = scores.size();
-        pair<int, int> players[n];
-        for (int i = 0; i < scores.size(); i++)
-            players[i] = { scores[i], ages[i] };
-        sort(players, players + n);
+        vector<int> idxs(n);
+        iota(idxs.begin(), idxs.end(), 0);
+        sort(idxs.begin(), idxs.end(), [&](const int& left, const int& right) {
+            return scores[left] != scores[right] ? scores[left] < scores[right] : ages[left] < ages[right];
+        });
 
-        f = vector<int>(max_age + 1, 0);
-        for (const auto& [score, age] : players)
-            update(age, query(age) + score);
-        return query(max_age);
+        vector<int> tree(1001, 0);
+        for (const int& i : idxs)
+            update(tree, ages[i], query(tree, ages[i]) + scores[i]);
+        return query(tree, 1000);
     }
 
 private:
-    void update(int idx, int val)
+    int lowbit(int x)
     {
-        for (; idx <= max_age; idx += idx & -idx)
-            f[idx] = max(f[idx], val);
+        return x & -x;
     }
 
-    int query(int idx)
+    void update(vector<int>& tree, size_t idx, int val)
+    {
+        for (; idx < tree.size(); idx += lowbit(idx))
+            tree[idx] = max(tree[idx], val);
+    }
+
+    int query(vector<int>& tree, size_t idx)
     {
         int res = 0;
-        for (; idx; idx &= idx - 1)
-            res = max(res, f[idx]);
+        for (; idx > 0; idx -= lowbit(idx))
+            res = max(res, tree[idx]);
         return res;
     }
-
-    static constexpr int max_age = 1000;
-    vector<int> f;
 };
