@@ -9,9 +9,10 @@ public:
         int m = grid.size(), n = grid[0].size();
         if (grid[0][0] || grid[m - 1][n - 1])
             return -1;
-        if (m == 1 && n == 1 && grid[0][0] == 0)
+        if (m == 1 && n == 1)
             return 1;
         vector<vector<int>> visited(m, vector<int>(n, 0));
+        visited[0][0] = 1;
         vector<vector<int>> directions { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 } };
         queue<vector<int>> frontier;
         frontier.push({ 0, 0 });
