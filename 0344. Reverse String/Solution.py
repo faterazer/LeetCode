@@ -1,8 +1,4 @@
-class Solution {
-    public void reverseString(char[] s) {
-
-    }
-}from typing import List
+from typing import List
 
 
 class Solution:
