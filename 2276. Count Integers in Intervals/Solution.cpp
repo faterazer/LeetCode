@@ -1,7 +1,7 @@
 #include <map>
 using namespace std;
 
-class CountIntervals {
+class CountIntervals_MK1 {
 public:
     CountIntervals()
     {
@@ -26,6 +26,46 @@ public:
 private:
     map<int, int> tree;
     int cnt = 0;
+};
+
+class CountIntervals_MK2 {
+public:
+    CountIntervals_MK2(int left = 0, int right = 1e9)
+        : l(left)
+        , r(right)
+    {
+    }
+
+    void add(int left, int right)
+    {
+        if (cnt == r - l + 1)
+            return;
+
+        if (left <= l && r <= right) {
+            cnt = r - l + 1;
+            return;
+        }
+
+        int m = l + ((r - l) >> 1);
+        if (!lchild)
+            lchild = new CountIntervals_MK2(l, m);
+        if (!rchild)
+            rchild = new CountIntervals_MK2(m + 1, r);
+        if (left <= m)
+            lchild->add(left, right);
+        if (right > m)
+            rchild->add(left, right);
+        cnt = lchild->count() + rchild->count();
+    }
+
+    int count()
+    {
+        return cnt;
+    }
+
+private:
+    int l = 0, r = 0, cnt = 0;
+    CountIntervals *lchild = nullptr, *rchild = nullptr;
 };
 
 /**
