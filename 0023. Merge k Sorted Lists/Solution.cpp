@@ -1,3 +1,4 @@
+#include <queue>
 #include <vector>
 using namespace std;
 
@@ -26,9 +27,31 @@ struct ListNode {
 
 class Solution {
 public:
-    ListNode* mergeKLists(vector<ListNode*>& lists)
+    ListNode* mergeKLists_MK1(vector<ListNode*>& lists) // 分治法
     {
         return mergeKLists(lists, 0, lists.size() - 1);
+    }
+
+    ListNode* mergeKLists(vector<ListNode*>& lists)
+    {
+        auto cmp = [](ListNode* a, ListNode* b) {
+            return a->val > b->val;
+        };
+        priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> min_heap(cmp);
+        for (ListNode* p : lists)
+            if (p)
+                min_heap.emplace(p);
+
+        ListNode *dummy = new ListNode, *cur = dummy;
+        while (!min_heap.empty()) {
+            ListNode* p = min_heap.top();
+            min_heap.pop();
+            cur->next = p;
+            cur = cur->next;
+            if (p->next)
+                min_heap.emplace(p->next);
+        }
+        return dummy->next;
     }
 
 private:
