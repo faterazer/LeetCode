@@ -32,7 +32,7 @@ public:
         return mergeKLists(lists, 0, lists.size() - 1);
     }
 
-    ListNode* mergeKLists(vector<ListNode*>& lists)
+    ListNode* mergeKLists_MK2(vector<ListNode*>& lists) // 堆
     {
         auto cmp = [](ListNode* a, ListNode* b) {
             return a->val > b->val;
