@@ -5,7 +5,7 @@ class Solution {
 public:
     vector<int> mostCompetitive(vector<int>& nums, int k)
     {
-        vector<int> mono_stk, res;
+        vector<int> mono_stk;
         for (size_t i = 0; i < nums.size(); i++) {
             while (!mono_stk.empty() && nums[i] < mono_stk.back() && nums.size() - i + mono_stk.size() > k)
                 mono_stk.pop_back();
