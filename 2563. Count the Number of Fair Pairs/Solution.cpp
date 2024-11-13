@@ -9,11 +9,13 @@ public:
     {
         ranges::sort(nums);
         long long ans = 0;
-        for (size_t i = 0; i < nums.size() - 1; ++i) {
-            int a = lower_bound(nums.begin() + i + 1, nums.end(), lower - nums[i]) - nums.begin();
-            int b = upper_bound(nums.begin() + i + 1, nums.end(), upper - nums[i]) - nums.begin();
-            if (a < b)
-                ans += b - a;
+        int left = nums.size(), right = nums.size(), n = nums.size();
+        for (int j = 0; j < n; ++j) {
+            while (left && nums[left - 1] >= lower - nums[j])
+                --left;
+            while (right && nums[right - 1] > upper - nums[j])
+                --right;
+            ans += min(right, j) - min(left, j);
         }
         return ans;
     }
