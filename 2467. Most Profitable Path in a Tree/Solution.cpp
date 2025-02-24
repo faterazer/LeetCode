@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <climits>
 #include <functional>
 #include <ranges>
 #include <unordered_map>
@@ -16,48 +17,39 @@ public:
             tree[e[1]].emplace_back(e[0]);
         }
 
-        unordered_map<int, int> bob_path { { bob, 0 } };
-        vector<int> visited(n, 0);
-        function<bool(int, int)> find_zero = [&](int node, int steps) -> bool {
-            visited[node] = 1;
+        vector<int> bob_path(n, n);
+        function<bool(int, int, int)> find_zero = [&](int node, int parent, int steps) -> bool {
             if (node == 0) {
                 bob_path[node] = steps;
                 return true;
             }
             for (int child : tree[node]) {
-                if (visited[child])
-                    continue;
-                if (find_zero(child, steps + 1)) {
+                if (child != parent && find_zero(child, node, steps + 1)) {
                     bob_path[node] = steps;
                     return true;
                 }
             }
             return false;
         };
-        find_zero(bob, 0);
-        
-        ranges::fill(visited, 0);
-        function<int(int, int, int)> dfs = [&](int node, int steps, int profit) -> int {
-            visited[node] = 1;
-            if (bob_path.contains(node)) {
-                if (bob_path[node] == steps)
-                    profit += amount[node] / 2;
-                else if (bob_path[node] > steps)
-                    profit += amount[node];
-            } else
+        find_zero(bob, -1, 0);
+
+        tree[0].emplace_back(-1); // 避免把 0 当作叶子节点
+        function<int(int, int, int, int)> dfs = [&](int node, int parent, int steps, int profit) -> int {
+            if (bob_path[node] > steps)
                 profit += amount[node];
+            else if (bob_path[node] == steps)
+                profit += amount[node] / 2;
 
+            if (tree[node].size() == 1)
+                return profit;
 
-            int max_profit = INT_MIN, cnt = 0;
-            for (int child : tree[node]) {
-                if (!visited[child]) {
-                    ++cnt;
-                    max_profit = max(max_profit, dfs(child, steps + 1, profit));
-                }
-            }
-            return cnt ? max_profit : profit;
+            int max_profit = INT_MIN;
+            for (int child : tree[node])
+                if (child != -1 && child != parent)
+                    max_profit = max(max_profit, dfs(child, node, steps + 1, profit));
+            return max_profit;
         };
 
-        return dfs(0, 0, 0);
+        return dfs(0, -1, 0, 0);
     }
 };
