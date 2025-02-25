@@ -34,7 +34,6 @@ public:
     FindElements(TreeNode* root)
         : tree(root)
     {
-        recover(root, 0);
     }
 
     bool find(int target)
@@ -51,17 +50,8 @@ public:
         }
         return true;
     }
-
+    
 private:
-    void recover(TreeNode* root, int val)
-    {
-        if (!root)
-            return;
-        root->val = val;
-        recover(root->left, 2 * val + 1);
-        recover(root->right, 2 * val + 2);
-    }
-
     TreeNode* tree = nullptr;
 };
 
