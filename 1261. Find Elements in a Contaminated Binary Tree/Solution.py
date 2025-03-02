@@ -13,15 +13,6 @@ class FindElements:
     def __init__(self, root: Optional[TreeNode]):
         self.root = root
 
-        def recover(node: TreeNode, x: int) -> None:
-            if not node:
-                return
-            node.val = x
-            recover(node.left, 2 * x + 1)
-            recover(node.right, 2 * x + 2)
-
-        recover(self.root, 0)
-
     def find(self, target: int) -> bool:
         target += 1
         cur = self.root
