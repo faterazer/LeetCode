@@ -1,6 +1,6 @@
-#include <ranges>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 using namespace std;
 
@@ -8,39 +8,25 @@ class Solution {
 public:
     int countOfSubstrings(string word, int k)
     {
-        unordered_map<char, int> vowel2idx {
-            { 'a', 0 }, { 'e', 1 }, { 'i', 2 }, { 'o', 3 }, { 'u', 4 }
-        };
-        int cnt[5] = { 0 };
-        int ans = 0, i = 0, n = word.size(), consonants = 0;
+        unordered_set<char> vowel_set { 'a', 'e', 'i', 'o', 'u' };
+        unordered_map<char, int> vowel_cnt;
+        int ans = 0, i = 0, v = 0, n = word.size(), consonants = 0;
         for (int j = 0; j < n; ++j) {
             char c = word[j];
-            vowel2idx.contains(c) ? ++cnt[vowel2idx[c]] : ++consonants;
+            vowel_set.contains(c) ? ++vowel_cnt[c] : ++consonants;
             while (consonants > k) {
-                char d = word[i++];
-                vowel2idx.contains(d) ? --cnt[vowel2idx[d]] : --consonants;
+                char d = word[v++];
+                i = v;
+                vowel_set.contains(d) ? --vowel_cnt[d] : --consonants;
+                if (!vowel_cnt[d])
+                    vowel_cnt.erase(d);
             }
-            if (ranges::min(cnt) > 0 && consonants == k) {
-                // cout << word.substr(i, j - i + 1) << endl;
-                ++ans;
-                int k = i;
-                // for (int x : cnt)
-                //     cout << x << " ";
-                // cout << endl;
-                for (k; k < j; ++k)
-                    if (vowel2idx.contains(word[k]) && --cnt[vowel2idx[word[k]]] > 0) {
-                        // cout << word.substr(k, j - k + 1) << endl;
-                        ++ans;
-                    } else {
-                        ++k;
-                        break;
-                    }
-                for (--k; k >= i; --k)
-                    if (vowel2idx.contains(word[k]))
-                        ++cnt[vowel2idx[word[k]]];
+            if (vowel_cnt.size() == 5 && consonants == k) {
+                for (; vowel_cnt.contains(word[v]) && vowel_cnt[word[v]] > 1; ++v)
+                    --vowel_cnt[word[v]];
+                ans += v - i + 1;
             }
         }
-
         return ans;
     }
 };
