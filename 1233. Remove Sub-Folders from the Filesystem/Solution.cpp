@@ -1,6 +1,6 @@
 #include <algorithm>
+#include <ranges>
 #include <string>
-#include <unordered_set>
 #include <vector>
 using namespace std;
 
@@ -8,24 +8,14 @@ class Solution {
 public:
     vector<string> removeSubfolders(vector<string>& folder)
     {
-        unordered_set<string> seen;
-        sort(folder.begin(), folder.end(), [](const string& left, const string& right) {
-            return left.size() < right.size();
-        });
-
-        vector<string> res;
-        for (const string& f : folder) {
-            bool check = true;
-            for (size_t i = 2; i < f.size(); i++) {
-                if (f[i] == '/' && seen.count(f.substr(0, i))) {
-                    check = false;
-                    break;
-                }
-            }
-            if (check)
-                res.emplace_back(f);
-            seen.emplace(f);
+        ranges::sort(folder);
+        vector<string> ans{folder[0]};
+        for (size_t i = 1; i < folder.size(); ++i) {
+            string& s = folder[i];
+            string& last = ans.back();
+            if (!s.starts_with(last) || s[last.size()] != '/')
+                ans.emplace_back(s);
         }
-        return res;
+        return ans;
     }
 };

@@ -1,17 +1,9 @@
-from typing import List
-
-
 class Solution:
-    def removeSubfolders(self, folder: List[str]) -> List[str]:
-        seen = set()
-        res = []
-        for f in sorted(folder, key=lambda x: len(x)):
-            check = True
-            for i in range(2, len(f)):
-                if f[i] == "/" and f[:i] in seen:
-                    check = False
-                    break
-            if check:
-                res.append(f)
-            seen.add(f)
-        return res
+    def removeSubfolders(self, folder: list[str]) -> list[str]:
+        folder.sort()
+        ans = [folder[0]]
+        for s in folder[1:]:
+            last = ans[-1]
+            if not s.startswith(last) or s[len(last)] != "/":
+                ans.append(s)
+        return ans
