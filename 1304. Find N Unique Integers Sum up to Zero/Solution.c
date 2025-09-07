@@ -7,8 +7,8 @@ int* sumZero(int n, int *returnSize)
 {
     int *ret = (int*)malloc(sizeof(int) * n);
     *returnSize = n;
-    for (int i = 0; i < n - 1; i++)
-        ret[i] = i + 1;
-    ret[n - 1] = n * (1 - n) / 2;
+    ret[0] = -n * (n - 1) / 2;
+    for (int i = 1; i < n; i++)
+        ret[i] = i;
     return ret;
 }
