@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def getNoZeroIntegers(self, n: int) -> List[int]:
+    def getNoZeroIntegers(self, n: int) -> list[int]:
         res = [0] * 2
         power, digit = 1, 0
         while n:
