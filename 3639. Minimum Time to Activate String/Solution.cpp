@@ -10,7 +10,7 @@ public:
         long long cnt = 1LL * n * (n + 1) / 2;
         if (cnt < k)
             return -1;
-        
+
         vector<int> prev(n), next(n);
         iota(prev.begin(), prev.end(), -1);
         iota(next.begin(), next.end(), 1);
