@@ -1,0 +1,16 @@
+#include <limits.h>
+#include <math.h>
+
+long long maxSumTrionic(int* nums, int numsSize)
+{
+    const long long NEG_INF = LLONG_MIN / 2; // 除 2 防止下面加法（和负数相加）溢出
+    long long ans = NEG_INF, f1 = NEG_INF, f2 = NEG_INF, f3 = NEG_INF;
+    for (int i = 1; i < numsSize; ++i) {
+        int x = nums[i - 1], y = nums[i];
+        f3 = x < y ? fmax(f3, f2) + y : NEG_INF;
+        f2 = x > y ? fmax(f2, f1) + y : NEG_INF;
+        f1 = x < y ? fmax(f1, x) + y : NEG_INF;
+        ans = fmax(ans, f3);
+    }
+    return ans;
+}
