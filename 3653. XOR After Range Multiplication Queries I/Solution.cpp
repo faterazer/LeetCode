@@ -1,3 +1,4 @@
+#include <map>
 #include <numeric>
 #include <unordered_map>
 #include <vector>
@@ -21,15 +22,15 @@ public:
     int xorAfterQueries_MK2(vector<int>& nums, vector<vector<int>>& queries)
     {
         int n = nums.size();
-        unordered_map<int, vector<tuple<int, int, int>>> groups; // k -> (l, r, v)
+        map<int, vector<tuple<int, int, int>>> groups; // k -> (l, r, v)
         for (const vector<int>& query : queries)
             groups[query[2]].emplace_back(query[0], query[1], query[3]);
-        
+
         for (const auto& [k, group] : groups) {
             unordered_map<int, vector<tuple<int, int, int>>> buckets; // l % k -> (l, r, v)
             for (const auto& [l, r, v] : group)
                 buckets[l % k].emplace_back(l, r, v);
-            
+
             for (const auto& [start, bucket] : buckets) {
                 int m = (n - 1 - start) / k + 1;
                 vector<int> diff(m + 1, 1);
@@ -45,6 +46,36 @@ public:
                     int j = start + i * k;
                     nums[j] = nums[j] * 1LL * mul_d % MOD;
                 }
+            }
+        }
+        return reduce(nums.begin(), nums.end(), 0, bit_xor());
+    }
+
+    // 等价 MK2 的更简洁写法
+    int xorAfterQueries_MK3(vector<int>& nums, vector<vector<int>>& queries)
+    {
+        map<pair<int, int>, vector<tuple<int, int, int>>> groups;
+        for (const vector<int>& query : queries) {
+            int l = query[0], r = query[1], k = query[2], v = query[3];
+            groups[{ k, l % k }].emplace_back(l, r, v);
+        }
+
+        int n = ssize(nums);
+        for (const auto& [key, group] : groups) {
+            int k = key.first, start = key.second;
+            int m = (n - 1 - start) / k + 1;
+            vector<int> diff(m + 1, 1);
+            for (auto [l, r, v] : group) {
+                diff[l / k] = diff[l / k] * 1LL * v % MOD;
+                int end_idx = (r - start) / k + 1;
+                diff[end_idx] = diff[end_idx] * 1LL * pow(v, MOD - 2) % MOD;
+            }
+
+            long long mul_d = 1;
+            for (int i = 0; i < m; ++i) {
+                mul_d = mul_d * 1LL * diff[i] % MOD;
+                int j = start + i * k;
+                nums[j] = nums[j] * mul_d % MOD;
             }
         }
         return reduce(nums.begin(), nums.end(), 0, bit_xor());
