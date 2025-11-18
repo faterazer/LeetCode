@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def isOneBitCharacter(self, bits: List[int]) -> bool:
+    def isOneBitCharacter(self, bits: list[int]) -> bool:
         ones = 0
         i = len(bits) - 2
         while i >= 0 and bits[i]:
