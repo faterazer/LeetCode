@@ -1,11 +1,8 @@
-from typing import List
-
-
 class Solution:
-    def prefixesDivBy5(self, A: List[int]) -> List[bool]:
-        ret = []
+    def prefixesDivBy5(self, nums: list[int]) -> list[bool]:
+        result = [False] * len(nums)
         n = 0
-        for x in A:
-            n = (n * 2 + x) % 5
-            ret.append(n == 0)
-        return ret
+        for i, bit in enumerate(nums):
+            n = (n << 1 | bit) % 5
+            result[i] = n == 0
+        return result
