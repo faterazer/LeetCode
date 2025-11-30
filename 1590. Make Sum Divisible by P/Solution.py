@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def minSubarray(self, nums: List[int], p: int) -> int:
+    def minSubarray(self, nums: list[int], p: int) -> int:
         total = sum(nums) % p
         if total == 0:
             return 0
