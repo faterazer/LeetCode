@@ -1,10 +1,11 @@
 import bisect
-from math import inf
+import sys
 
 
 class Solution:
     def maxWalls(self, robots: list[int], distance: list[int], walls: list[int]) -> int:
-        sorted_robots = [(0, 0)] + sorted(zip(robots, distance)) + [(inf, 0)]
+        INF = sys.maxsize
+        sorted_robots = [(0, 0)] + sorted(zip(robots, distance)) + [(INF, 0)]
         walls.sort()
 
         def count_walls(start: int, end: int) -> int:
