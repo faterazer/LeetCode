@@ -1,18 +1,15 @@
-#include <cmath>
+#include <numeric>
+using namespace std;
 
-class Solution
-{
+class Solution {
 public:
     int countTriples(int n)
     {
-        int res = 0, c;
-        for (int a = 3; a <= n; a++) {
-            for (int b = a; b <= n; b++) {
-                c = int(sqrt(a * a + b * b));
-                if (c <= n && c * c == a * a + b * b)
-                    res += a == b ? 1 : 2;
-            }
-        }
-        return res;
+        int result = 0;
+        for (int u = 3; u * u < n * 2; u += 2)
+            for (int v = 1; v < u && u * u + v * v <= n * 2; v += 2)
+                if (gcd(u, v) == 1)
+                    result += n * 2 / (u * u + v * v);
+        return result * 2;
     }
 };
