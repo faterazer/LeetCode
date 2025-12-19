@@ -8,6 +8,6 @@ class Solution:
         for i, (d, r) in enumerate(zip(damage, requirement)):
             damage_accum[i + 1] = damage_accum[i] + d
             need = r - hp + damage_accum[i + 1]
-            idx = bisect.bisect_left(damage_accum, need)
+            idx = bisect.bisect_left(damage_accum, need, 0, i + 1)
             result += i + 1 - idx
         return result
