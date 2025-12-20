@@ -1,12 +1,10 @@
-from typing import List
+from itertools import pairwise
 
 
 class Solution:
-    def minDeletionSize(self, A: List[str]) -> int:
-        res, m, n = 0, len(A), len(A[0])
-        for i in range(0, n):
-            for j in range(1, m):
-                if A[j][i] < A[j - 1][i]:
-                    res += 1
-                    break
-        return res
+    def minDeletionSize(self, A: list[str]) -> int:
+        result, m, n = 0, len(A), len(A[0])
+        for col in zip(*A):
+            if any(x > y for x, y in pairwise(col)):
+                result += 1
+        return result
