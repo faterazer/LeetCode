@@ -8,7 +8,7 @@ Return the **smallest** level `x` such that the sum of all the values of nodes a
 
 ![example 1](https://assets.leetcode.com/uploads/2019/05/03/capture.JPG)
 
-```()
+```text
 Input: root = [1,7,0,7,-8,null,null]
 Output: 2
 Explanation: 
@@ -20,7 +20,7 @@ So we return the level with the maximum sum which is level 2.
 
 **Example 2:**
 
-```()
+```text
 Input: root = [989,null,10250,98693,-89388,null,null,null,-32127]
 Output: 2
 ```
