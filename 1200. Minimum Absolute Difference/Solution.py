@@ -1,8 +1,8 @@
-from typing import List
+from itertools import pairwise
 
 
 class Solution:
-    def minimumAbsDifference(self, arr: List[int]) -> List[List[int]]:
+    def minimumAbsDifference(self, arr: list[int]) -> list[list[int]]:
         arr.sort()
-        minDiff = min(b - a for a, b in zip(arr, arr[1:]))
-        return [[a, b] for a, b in zip(arr, arr[1:]) if b - a == minDiff]
+        minDiff = min(b - a for a, b in pairwise(arr))
+        return [[a, b] for a, b in pairwise(arr) if b - a == minDiff]
