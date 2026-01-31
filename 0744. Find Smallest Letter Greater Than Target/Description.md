@@ -6,7 +6,7 @@ Letters also wrap around. For example, if the target is `target = 'z'` and `lett
 
 **Examples:**
 
-```()
+```text
 Input:
 letters = ["c", "f", "j"]
 target = "a"
