@@ -12,7 +12,7 @@ Return `true` if `nums` is trionic, otherwise return `false`.
 
 **Example 1:**
 
-```()
+```text
 Input: nums = [1,3,5,4,2,6]
 
 Output: true
@@ -25,7 +25,7 @@ Explanation: Pick p = 2, q = 4:
 
 **Example 2:**
 
-```()
+```text
 Input: nums = [2,1,3]
 
 Output: false
