@@ -8,7 +8,7 @@ For a given number `N` in base-10, return the complement of it's binary represen
 
 **Example 1:**
 
-```()
+```text
 Input: 5
 Output: 2
 Explanation: 5 is "101" in binary, with complement "010" in binary, which is 2 in base-10.
@@ -16,7 +16,7 @@ Explanation: 5 is "101" in binary, with complement "010" in binary, which is 2 i
 
 **Example 2:**
 
-```()
+```text
 Input: 7
 Output: 0
 Explanation: 7 is "111" in binary, with complement "000" in binary, which is 0 in base-10.
@@ -24,7 +24,7 @@ Explanation: 7 is "111" in binary, with complement "000" in binary, which is 0 i
 
 **Example 3:**
 
-```()
+```text
 Input: 10
 Output: 5
 Explanation: 10 is "1010" in binary, with complement "0101" in binary, which is 5 in base-10.
