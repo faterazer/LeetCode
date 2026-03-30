@@ -8,7 +8,7 @@ char findKthBit_MK1(int n, int k)
     else if (k < mid)
         return findKthBit_MK1(n - 1, k);
     else
-        return '1' - findKthBit_MK1(n - 1, (1 << n) - k);
+        return findKthBit_MK1(n - 1, (1 << n) - k) ^ 1;
 }
 
 char findKthBit_MK2(int n, int k)
