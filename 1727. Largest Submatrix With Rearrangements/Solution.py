@@ -4,7 +4,7 @@ class Solution:
         heights = [0] * n
         ids = list(range(n))
         result = 0
-        for i, row in enumerate(matrix):
+        for row in matrix:
             zeros, non_zeros = [], []
             for j in ids:
                 if row[j] == 0:
