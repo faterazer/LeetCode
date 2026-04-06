@@ -8,7 +8,7 @@ The move sequence is represented by a string, and the character  `moves[i]` repr
 
 **Example 1:**
 
-```()
+```text
 Input: "UD"
 Output: true
 Explanation: The robot moves up once, and then down once. All moves have the same magnitude, so it ended up at the origin where it started. Therefore, we return true.
@@ -16,7 +16,7 @@ Explanation: The robot moves up once, and then down once. All moves have the sam
 
 **Example 2:**
 
-```()
+```text
 Input: "LL"
 Output: false
 Explanation: The robot moves left twice. It ends up two "moves" to the left of the origin. We return false because it is not at the origin at the end of its moves.
