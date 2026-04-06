@@ -21,7 +21,7 @@ public:
                 for (int i = 0; i < command; i++) {
                     coord[0] += dirs[idx][0];
                     coord[1] += dirs[idx][1];
-                    if (obs.count(coord)) {
+                    if (obs.contains(coord)) {
                         coord[0] -= dirs[idx][0];
                         coord[1] -= dirs[idx][1]; 
                         break;
