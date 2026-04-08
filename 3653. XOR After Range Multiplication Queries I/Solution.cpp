@@ -6,7 +6,7 @@ using namespace std;
 
 class Solution {
 public:
-    // 暴力法，适合 k 值较小的情况
+    // 暴力法，适合 k 值较大的情况
     int xorAfterQueries_MK1(vector<int>& nums, vector<vector<int>>& queries)
     {
         constexpr int MOD = 1e9 + 7;
@@ -18,7 +18,7 @@ public:
         return reduce(nums.begin(), nums.end(), 0, bit_xor());
     }
 
-    // 商分数组，适合 k 值较大的情况
+    // 商分数组，适合 k 值较小的情况
     int xorAfterQueries_MK2(vector<int>& nums, vector<vector<int>>& queries)
     {
         int n = nums.size();
