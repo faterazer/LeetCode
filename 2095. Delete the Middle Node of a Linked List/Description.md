@@ -10,7 +10,7 @@ The **middle node** of a linked list of size `n` is the `⌊n / 2⌋th` node fro
 
 ![example 1](https://assets.leetcode.com/uploads/2021/11/16/eg1drawio.png)
 
-```()
+```text
 Input: head = [1,3,4,7,1,2,6]
 Output: [1,3,4,1,2,6]
 Explanation:
@@ -23,7 +23,7 @@ We return the new list after removing this node.
 
 ![example 2](https://assets.leetcode.com/uploads/2021/11/16/eg2drawio.png)
 
-```()
+```text
 Input: head = [1,2,3,4]
 Output: [1,2,4]
 Explanation:
@@ -35,7 +35,7 @@ For n = 4, node 2 with value 3 is the middle node, which is marked in red.
 
 ![example 3](https://assets.leetcode.com/uploads/2021/11/16/eg3drawio.png)
 
-```()
+```text
 Input: head = [2,1]
 Output: [2]
 Explanation:
