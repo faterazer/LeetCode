@@ -8,7 +8,7 @@ You can use each character in `text` **at most once**. Return the maximum number
 
 ![example](https://assets.leetcode.com/uploads/2019/09/05/1536_ex1_upd.JPG)
 
-```()
+```text
 Input: text = "nlaebolko"
 Output: 1
 ```
@@ -17,14 +17,14 @@ Output: 1
 
 ![example](https://assets.leetcode.com/uploads/2019/09/05/1536_ex2_upd.JPG)
 
-```()
+```text
 Input: text = "loonbalxballpoon"
 Output: 2
 ```
 
 **Example 3:**
 
-```()
+```text
 Input: text = "leetcode"
 Output: 0
 ```
